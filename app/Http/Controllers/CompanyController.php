@@ -51,7 +51,7 @@ class CompanyController extends Controller
     {
         //retrieve one data
         $company = Company::find($company->id);
-        // $project ;
+
         return view('companies.show', ['company'=>$company]);
     }
 
@@ -63,7 +63,10 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        //retrieve one data
+        $company = Company::find($company->id);
+        
+        return view('companies.edit', ['company'=>$company]);
     }
 
     /**
