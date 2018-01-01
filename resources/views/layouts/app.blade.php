@@ -71,6 +71,8 @@
             </div>
         </nav>
         <div class="container">
+            @include('partial.errors');
+            @include('partial.success');
             <div class="row">
                 @yield('content')
             </div>
