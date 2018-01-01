@@ -17,4 +17,9 @@ class Company extends Model
     public function user() {
         return $this->belongsTo('App\Http\Models\User');
     }
+
+    //every company has many projects
+    public function projects() {
+        return $this->hasMany('App\Http\Models\Project');
+    }
 }

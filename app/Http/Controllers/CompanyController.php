@@ -51,7 +51,7 @@ class CompanyController extends Controller
     {
         //retrieve one data
         $company = Company::find($company->id);
-
+        // $project ;
         return view('companies.show', ['company'=>$company]);
     }
 
