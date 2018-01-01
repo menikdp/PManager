@@ -16,7 +16,7 @@
                     <input name="company-name"
                         value="{{$company->name}}"
                         placeholder="Enter name"
-                        id="company-name"
+                        id="name"
                         class="form-control" 
                         spellcheck="false" 
                         required />
@@ -25,6 +25,7 @@
                     <label for="company-description">Description <span class="required">*</span> </label>
                     <textarea name="description"
                         placeholder="Enter description"
+                        id="description"
                         style="resize: vertical"
                         rows="5"
                         class="form-control autosize-target text-left"
