@@ -7,13 +7,14 @@
         {{-- <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p> --}}
     </div>
     <div class="row col-md-9 col-lg-9 col-sm-9 pull-left"> {{--main content--}}
+        <h2>Update Company</h2>
         <div class="row col-md-12 col-lg-12 col-sm-12" style="background: white; margin: 10px;"> 
            <form method="post" action="{{route('companies.update', [$company->id])}}" >
                 {{ csrf_field() }}
-                <input type="hidden" name="_method" value="post">
+                <input type="hidden" name="_method" value="put">
                 <div class="form-group">
                     <label for="company-name">Name <span class="required">*</span> </label>
-                    <input name="company-name"
+                    <input name="name"
                         value="{{$company->name}}"
                         placeholder="Enter name"
                         id="name"
