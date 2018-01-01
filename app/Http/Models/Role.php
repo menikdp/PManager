@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,4 +10,13 @@ class Role extends Model
     protected $fillable = [
     	'name', 
     ];
+
+    /**
+    * relationship between models
+    */
+
+    //every role has many users
+    public function users() {
+        return $this->hasMany('App\Http\Models\User');
+    }
 }
