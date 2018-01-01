@@ -87,7 +87,7 @@ class CompanyController extends Controller
             return redirect()->route('companies.show', ['company'=>$company->id])->with('success', 'Company update successfully');
         }
         //redirect
-        return back()->withInput();
+        return back()->withInput()->with('error', 'Company could not be update');
     }
 
     /**
@@ -98,6 +98,11 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $findCompany = Company::find($company->id);
+        if ($findCompany->delete()) {
+            return redirect()->route('companies.index')->with('success', 'Company delete successfully');
+        }
+
+        return back()->withInput()->with('error', 'Company could not be delete');
     }
 }
