@@ -49,7 +49,10 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        //retrieve one data
+        $company = Company::find($company->id);
+
+        return view('companies.show', ['company'=>$company]);
     }
 
     /**
