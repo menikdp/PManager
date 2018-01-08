@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resources([
 	'comments' => 'CommentController',
 	'companies' => 'CompanyController',
-	'projects' => 'Projectcontroller',
+	'projects' => 'ProjectController',
 	'roles' => 'RoleController',
 	'tasks' => 'TaskController',
 	'user' => 'UserController'
