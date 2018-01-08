@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Models\Company;
 use Illuminate\Http\Request;
+use Auth;
 
 class CompanyController extends Controller
 {
@@ -28,6 +29,7 @@ class CompanyController extends Controller
     public function create()
     {
         //
+        return view('companies.create');
     }
 
     /**
@@ -38,7 +40,21 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //save data
+        if (Auth::check()) {
+            $company = Company::create([
+                'name' => $request->input('name'),
+                'description' => $request->input('description'),
+                'user_id' => Auth::user()->id
+            ]);
+            
+            //if sucecess, sent flash and redirect to company page
+            if ($company) {
+                return redirect()->route('companies.show', ['company'=>$company->id])->with('success', 'Company added successfully');
+            }  
+        }
+
+        return back()->withInput()->with('error', 'Error creating company');
     }
 
     /**

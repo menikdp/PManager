@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="jumbotron">
-        <h1>{{$company->name}}</h1>
-        <p class="lead">{{$company->description}}</p>
-        {{-- <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p> --}}
-    </div>
     <div class="row col-md-9 col-lg-9 col-sm-9 pull-left"> {{--main content--}}
         <h2>Update Company</h2>
         <div class="row col-md-12 col-lg-12 col-sm-12" style="background: white; margin: 10px;"> 
@@ -40,15 +35,25 @@
     </div> {{--/main content--}}
 
     <div class="col-sm-3 col-md-3 col-lg-3 pull-right"> {{--side bar--}}
-        {{--<div class="sidebar-module sidebar-module-inset">
-            <h4>About</h4>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-        </div>--}}
-        <div class="sidebar-module">
+       <div class="sidebar-module">
             <h4>Actions</h4>
-            <ol class="list-unstyled">
-                <li><a href="/companies/{{$company->id}}">View Company</a></li>
-                <li><a href="/companies">List Companies</a></li>
+           <ol class="list-unstyled">
+                <li><a href="/projects/create">Add Project</a></li>
+                <li><a href="/companies/create">Add Company</a></li>
+                <li><a href="/companies">My Companies</a></li>
+                <li><a href="/companies/{{$company->id}}/edit">Edit Company</a></li>
+                <li><a href="#" onclick="var result = confirm('Are you sure you wish to delete this Company?');
+                      if( result ){
+                              event.preventDefault();
+                              document.getElementById('delete-form').submit();
+                      }">
+                  Delete Company
+                    </a>
+                    <form id="delete-form" action="{{ route('companies.destroy',[$company->id]) }}" method="POST" style="display: none;">
+                        <input type="hidden" name="_method" value="delete">
+                        {{ csrf_field() }}
+                    </form>             
+                </li>
             </ol>
         </div>
     </div><!-- /sidebar -->
