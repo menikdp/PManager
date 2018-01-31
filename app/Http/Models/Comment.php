@@ -12,7 +12,7 @@ class Comment extends Model
     	'url',
     	'user_id',
     	'commentable_id',
-    	'comment_type',
+    	'commentable_type',
     ];
 
     public function commentable()

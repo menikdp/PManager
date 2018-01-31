@@ -7,14 +7,40 @@
             <p class="lead">{{$project->description}}</p>
         </div>
         <div class="row" style="background: white; margin: 10px;"> 
-            <a href="/projects/create" class="pull-right btn btn-default btn-lg">Add Project</a>
-           {{--  @foreach ($project->projects as $project)
-                <div class="col-lg-4">
-                    <h2>{{$project->name}}</h2>
-                    <p>{{$project->description}}</p>
-                  <p><a class="btn btn-primary" href="/projects/{{$project->id}}" role="button">View details &raquo;</a></p>
-                </div>
-            @endforeach --}}
+            <a href="/projects/create" class="pull-right btn btn-default btn-sm">Add Project</a>
+            <br>
+            <div class="row container-fluid">
+                <form method="post" action="{{route('comments.store')}}" >
+                    {{ csrf_field() }}
+                   
+                    <input type="hidden" name="commentable_type" value="Project">
+                    <input type="hidden" name="commentable_id" value="{{$project->id}}">
+
+                    <div class="form-group">
+                        <label for="comment-content">Comment <span class="required">*</span> </label>
+                        <textarea name="body"
+                            placeholder="Enter comment"
+                            id="comment-content"
+                            style="resize: vertical"
+                            rows="5"
+                            class="form-control autosize-target text-left"
+                            spellcheck="false"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Proof of work done (Url/photos) <span class="required">*</span> </label>
+                        <textarea name="url"
+                            placeholder="Enter Url or screenshots"
+                            id="comment-url"
+                            style="resize: vertical"
+                            rows="5"
+                            class="form-control autosize-target text-left"
+                            spellcheck="false"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                    </div>
+                </form>
+            </div>
         </div> 
     </div> {{--/main content--}}
 
