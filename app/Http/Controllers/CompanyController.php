@@ -15,10 +15,14 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //show all companies
-        $companies = Company::all();
+        //show all companies that relates to user id
+        if (Auth::check()) {
+            $companies = Company::where('user_id', Auth::user()->id)->get();
 
-        return view('companies.index', ['companies'=>$companies]);
+            return view('companies.index', ['companies'=>$companies]);
+        }
+        
+        return view('auth.login');
     }
 
     /**

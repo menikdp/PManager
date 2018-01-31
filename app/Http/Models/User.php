@@ -39,27 +39,32 @@ class User extends Authenticatable
     */
 
     //every user has many comments
-    public function comments() {
-        return $this->hasMany('App\Http\Models\Comment');
+    public function comments() 
+    {
+        return $this->morphMany('App\Http\Models\Comment', 'commentable');
     }
 
     //every user belongs to role
-    public function role() {
+    public function role() 
+    {
         return $this->belongsTo('App\Http\Models\Role');
     }
 
     //every user has many companies?
-    public function companies() {
+    public function companies()
+    {
         return $this->hasMany('App\Http\Models\Company');
     }
 
     //every user belongs to many tasks
-    public function tasks() {
+    public function tasks() 
+    {
         return $this->belongsToMany('App\Http\Models\Task');
     }
 
     //every user belongs to many projects
-    public function projects() {
+    public function projects() 
+    {
         return $this->belongsToMany('App\Http\Models\Project');
     }
 }
